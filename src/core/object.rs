@@ -1,1 +1,3 @@
-pub trait Object {}
+pub trait Object {
+    fn intersect(&self) -> bool;
+}

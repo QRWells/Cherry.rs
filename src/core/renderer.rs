@@ -1,3 +1,5 @@
+use super::scene::Scene;
+
 pub trait Renderer {
-    fn render(&self) -> image::DynamicImage;
+    fn render(&self, scene: &Scene) -> image::DynamicImage;
 }

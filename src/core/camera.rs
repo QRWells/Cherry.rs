@@ -1,6 +1,4 @@
-use ultraviolet::{Vec2, Vec3};
-
-use crate::util::{math::deg_to_rad, sampler::get_random_double_within_circle};
+use crate::util::{math::*, sampler::*};
 
 use super::ray::Ray;
 
@@ -40,6 +38,7 @@ impl Camera {
         let horizontal = viewport_width * u * focal_distance;
         let vertical = -viewport_height * v * focal_distance;
         let top_left = look_from - horizontal / 2f32 - vertical / 2f32 - w * focal_distance;
+
         Camera {
             aperture,
             focal_distance,
@@ -57,7 +56,7 @@ impl Camera {
 
     pub fn generate_ray(&self, uv: Vec2) -> Ray {
         let lens_radius = self.aperture / 2f32;
-        let dist = get_random_double_within_circle() * lens_radius;
+        let dist = get_random_within_circle() * lens_radius;
         let offset = dist.x * self.u + dist.y * self.v;
         Ray::new(
             self.position + offset,

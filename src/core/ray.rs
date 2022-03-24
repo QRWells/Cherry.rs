@@ -1,4 +1,4 @@
-use ultraviolet::Vec3;
+use crate::util::math::*;
 
 pub struct Ray {
     origin: Vec3,

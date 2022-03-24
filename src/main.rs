@@ -1,5 +1,5 @@
 mod core;
-mod integrator;
+mod renderer;
 mod util;
 
 fn main() {

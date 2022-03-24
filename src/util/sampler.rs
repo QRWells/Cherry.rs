@@ -8,7 +8,7 @@ where
     rand::thread_rng().gen::<T>()
 }
 
-pub fn get_random_double_within_circle() -> Vec2 {
+pub fn get_random_within_circle() -> Vec2 {
     let rad = get_random::<f32>();
     let r = get_random::<f32>();
     Vec2 {
