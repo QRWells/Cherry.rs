@@ -1,24 +1,24 @@
-use crate::util::math::*;
+use nalgebra::Vector3;
 
 pub struct Ray {
-    origin: Vec3,
-    dir: Vec3,
+    origin: Vector3<f32>,
+    dir: Vector3<f32>,
 }
 
 impl Ray {
-    pub fn new(origin: Vec3, dir: Vec3) -> Self {
+    pub fn new(origin: Vector3<f32>, dir: Vector3<f32>) -> Self {
         Ray { origin, dir }
     }
 
-    pub fn origin(&self) -> &Vec3 {
+    pub fn origin(&self) -> &Vector3<f32> {
         &self.origin
     }
 
-    pub fn dir(&self) -> &Vec3 {
+    pub fn dir(&self) -> &Vector3<f32> {
         &self.dir
     }
 
-    pub fn point_at(&self, t: f32) -> Vec3 {
-        self.dir.mul_add(Vec3::new(t, t, t), self.origin)
+    pub fn point_at(&self, distance: f32) -> Vector3<f32> {
+        (self.dir * distance) + self.origin
     }
 }

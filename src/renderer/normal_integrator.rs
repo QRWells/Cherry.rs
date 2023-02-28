@@ -1,4 +1,7 @@
-use crate::core::{renderer::Renderer, scene::Scene};
+use crate::core::{
+    renderer::{Integrator, Renderer},
+    scene::Scene,
+};
 
 pub struct NormalIntegrator {}
 
@@ -7,3 +10,5 @@ impl Renderer for NormalIntegrator {
         todo!()
     }
 }
+
+impl Integrator for NormalIntegrator {}

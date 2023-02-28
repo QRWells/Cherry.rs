@@ -1,20 +1,17 @@
-use rand::prelude::*;
+use nalgebra::Vector3;
 
-use crate::core::ray::Ray;
-use crate::util::math::{f_schlick, saturate, RandomInit, Vec3};
+type Color = Vector3<f32>;
 
-type Color = Vec3;
-
-struct BsdfInfo {
-    wi: Vec3,
-    n: Vec3,
-    wo: Vec3,
+pub struct BsdfInfo {
+    wi: Vector3<f32>,
+    n: Vector3<f32>,
+    wo: Vector3<f32>,
 }
 
 pub trait Material: Send + Sync {
-    fn eval(&self, bsdfInfo: &BsdfInfo) -> Color;
-    fn sample(&self, bsdfInfo: &mut BsdfInfo) -> ();
-    fn pdf(&self, bsdfInfo: &BsdfInfo) -> f32;
+    fn eval(&self, bsdf_info: &BsdfInfo) -> Color;
+    fn sample(&self, bsdf_info: &mut BsdfInfo) -> ();
+    fn pdf(&self, bsdf_info: &BsdfInfo) -> f32;
 }
 
 pub struct Mirror {}

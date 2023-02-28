@@ -1,4 +1,7 @@
-use crate::core::{renderer::Renderer, scene::Scene};
+use crate::core::{
+    renderer::{Rasterizer, Renderer},
+    scene::Scene,
+};
 
 pub struct RasterizationRenderer {}
 
@@ -7,3 +10,5 @@ impl Renderer for RasterizationRenderer {
         todo!()
     }
 }
+
+impl Rasterizer for RasterizationRenderer {}
