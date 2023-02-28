@@ -60,9 +60,11 @@ impl Camera {
         let lens_radius = self.aperture / 2f32;
         let dist = get_random_within_circle() * lens_radius;
         let offset = dist.x * self.u + dist.y * self.v;
-        Ray::new(
-            self.position + offset,
-            self.top_left + uv.x * self.horizontal + uv.y * self.vertical - self.position - offset,
-        )
+        Ray {
+            origin: (self.position + offset).into(),
+            dir: self.top_left + uv.x * self.horizontal + uv.y * self.vertical
+                - self.position
+                - offset,
+        }
     }
 }

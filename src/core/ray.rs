@@ -1,16 +1,12 @@
-use nalgebra::Vector3;
+use nalgebra::{Point3, Vector3};
 
 pub struct Ray {
-    origin: Vector3<f32>,
-    dir: Vector3<f32>,
+    pub origin: Point3<f32>,
+    pub dir: Vector3<f32>,
 }
 
 impl Ray {
-    pub fn new(origin: Vector3<f32>, dir: Vector3<f32>) -> Self {
-        Ray { origin, dir }
-    }
-
-    pub fn origin(&self) -> &Vector3<f32> {
+    pub fn origin(&self) -> &Point3<f32> {
         &self.origin
     }
 
@@ -18,7 +14,11 @@ impl Ray {
         &self.dir
     }
 
+    pub fn dir_reciprocal(&self) -> Vector3<f32> {
+        Vector3::new(1.0 / self.dir.x, 1.0 / self.dir.y, 1.0 / self.dir.z)
+    }
+
     pub fn point_at(&self, distance: f32) -> Vector3<f32> {
-        (self.dir * distance) + self.origin
+        self.origin.coords + self.dir * distance
     }
 }

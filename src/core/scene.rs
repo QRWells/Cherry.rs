@@ -24,4 +24,11 @@ impl Scene {
     fn clear_lights(&mut self) {
         self.lights.clear();
     }
+
+    pub fn intersect(
+        &self,
+        ray: &crate::core::ray::Ray,
+    ) -> Option<crate::core::intersection::Intersection> {
+        todo!()
+    }
 }

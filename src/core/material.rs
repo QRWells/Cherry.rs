@@ -3,9 +3,9 @@ use nalgebra::Vector3;
 type Color = Vector3<f32>;
 
 pub struct BsdfInfo {
-    wi: Vector3<f32>,
+    w_i: Vector3<f32>,
     n: Vector3<f32>,
-    wo: Vector3<f32>,
+    w_o: Vector3<f32>,
 }
 
 pub trait Material: Send + Sync {

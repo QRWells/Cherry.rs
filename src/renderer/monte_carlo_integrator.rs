@@ -5,10 +5,14 @@ use crate::core::{
 
 pub struct MonteCarloIntegrator {}
 
-impl Renderer for MonteCarloIntegrator {
-    fn render(&self, scene: &Scene) -> image::DynamicImage {
+impl Integrator for MonteCarloIntegrator {
+    fn li(&self, scene: &Scene, ray: &crate::core::ray::Ray) -> nalgebra::Vector3<f32> {
         todo!()
     }
 }
 
-impl Integrator for MonteCarloIntegrator {}
+impl Renderer for MonteCarloIntegrator {
+    fn render(&self, scene: &Scene) -> image::DynamicImage {
+        self.integrate_all(scene)
+    }
+}
